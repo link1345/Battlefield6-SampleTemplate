@@ -10,7 +10,7 @@ const ignoreConfig = {
 export default defineConfig([
   ignoreConfig,
   {
-    files: ["src/**/*.{ts,mts,cts}"],
+    files: ["mods/**/*.{ts,mts,cts}"],
     languageOptions: {
       globals: globals.browser, parserOptions: {
         "ecmaVersion": "latest",
