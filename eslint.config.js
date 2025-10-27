@@ -18,6 +18,10 @@ export default defineConfig([
         parser: "@typescript-eslint/parser"
       },
     },
+    "settings": {
+      // ✅ 以下で import 解析をスキップしたいモジュールを列挙
+      "import/ignore": ["^modlib$", "^mod$"],
+    }
   },
   tseslint.configs.recommended,
 ]);
