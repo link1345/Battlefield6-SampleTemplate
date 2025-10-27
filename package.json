@@ -3,6 +3,9 @@
   "version": "0.0.1",
   "type": "module",
   "description": "Battlefield6 Sample Template : Rule Editor Script",
+  "scripts": {
+    "lint": " npx eslint ./mods"
+  },
   "devDependencies": {
     "@types/eslint": "^9.6.1",
     "@types/node": "20.6.0",
