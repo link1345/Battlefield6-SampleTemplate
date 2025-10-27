@@ -4,7 +4,8 @@
   "type": "module",
   "description": "Battlefield6 Sample Template : Rule Editor Script",
   "scripts": {
-    "lint": " npx eslint ./mods"
+    "lint": "npx eslint ./mods",
+    "lint:fix": "npx eslint ./mods --fix"
   },
   "devDependencies": {
     "@types/eslint": "^9.6.1",
