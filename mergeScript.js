@@ -16,7 +16,7 @@ function getAllScriptFiles(dir) {
             files.push(...getAllScriptFiles(fullPath));
         } else if (
             entry.isFile() &&
-            (fullPath.endsWith(".ts") || fullPath.endsWith(".js")) &&
+            (fullPath.endsWith(".ts")) &&
             !fullPath.endsWith(".d.ts") // 型定義ファイルは除外
         ) {
             files.push(fullPath);
@@ -33,17 +33,11 @@ function getAllScriptFiles(dir) {
  */
 async function mergeTSRecursive(inputDir, outputFile) {
     const files = getAllScriptFiles(inputDir);
-    const importSet = new Set();
     let body = "";
 
     for (const file of files) {
         const content = fs.readFileSync(file, "utf-8");
 
-        // import文を抽出
-        const imports = content.match(/^import .*?;$/gm) || [];
-        imports.forEach((imp) => importSet.add(imp));
-
-        // import文・export文の空行調整
         const bodyPart = content
             .replace(/^import .*?;$/gm, "")
             .trim()
@@ -52,14 +46,8 @@ async function mergeTSRecursive(inputDir, outputFile) {
         body += `\n// ---- ${path.relative(inputDir, file)} ----\n${bodyPart}\n`;
     }
 
-    // importをアルファベット順に並べて統一
-    const sortedImports = Array.from(importSet).sort((a, b) =>
-        a.localeCompare(b)
-    );
-
-    const result =
-        sortedImports.join("\n") +
-        "\n\n// ===============================\n" +
+    const result = `import * as modlib from \"modlib";\n` +
+        "\n// ===============================\n" +
         "// Combined TS/JS Contents\n" +
         "// ===============================\n" +
         body;
