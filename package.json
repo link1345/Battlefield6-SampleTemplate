@@ -1,11 +1,12 @@
 {
   "name": "portal_sample",
-  "version": "0.0.1",
+  "version": "1.0.0",
   "type": "module",
   "description": "Battlefield6 Sample Template : Rule Editor Script",
   "scripts": {
     "lint": "npx eslint ./mods",
-    "lint:fix": "npx eslint ./mods --fix"
+    "lint:fix": "npx eslint ./mods --fix",
+    "build": "node ./mergeScript.js"
   },
   "devDependencies": {
     "@types/eslint": "^9.6.1",
