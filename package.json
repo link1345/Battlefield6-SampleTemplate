@@ -13,7 +13,7 @@
     "@types/eslint": "^9.6.1",
     "@types/node": "^24.10.1",
     "@typescript-eslint/parser": "^8.46.4",
-    "bfportal-vitest-mock": "^0.0.8",
+    "bfportal-vitest-mock": "^0.0.12",
     "typescript": "^5.9.3",
     "typescript-eslint": "^8.46.4"
   },
