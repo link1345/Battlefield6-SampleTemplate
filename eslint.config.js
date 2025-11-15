@@ -3,14 +3,14 @@ import tseslint from "typescript-eslint";
 import { defineConfig } from "eslint/config";
 
 const ignoreConfig = {
-  ignores: ["**/*.{js,mjs,cjs}"],
+  ignores: ["**/*.{js,mjs,cjs}", "code/**"],
 };
 
 
 export default defineConfig([
   ignoreConfig,
   {
-    files: ["mods/**/*.{ts,mts,cts}"],
+    files: ["./mods/**/*.{ts,mts,cts}", "./test/**/*.{ts,mts,cts}"],
     languageOptions: {
       globals: globals.browser, parserOptions: {
         "ecmaVersion": "latest",
@@ -19,7 +19,6 @@ export default defineConfig([
       },
     },
     "settings": {
-      // ✅ 以下で import 解析をスキップしたいモジュールを列挙
       "import/ignore": ["^modlib$", "^mod$"],
     }
   },
