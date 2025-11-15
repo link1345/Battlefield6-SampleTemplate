@@ -34,4 +34,6 @@ Add the strings you want to include in `dist/String.json`.
 
 ### How to run the tests
 
-This project uses the bfportal-vitest-mock package. For how to install and use it, please refer to the section below.
+This project uses the `bfportal-vitest-mock` package. For how to install and use it, please refer to the section below.
+
+https://github.com/link1345/bfportal-vitest-mock
