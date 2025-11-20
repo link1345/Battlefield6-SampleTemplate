@@ -10,6 +10,7 @@
 * githubにpushすると、自動でeslintで文法チェックが入ります。
 * `npm run build`を叩くと、複数のtsファイルを、1つのtsファイルにまとめる
   * BF Portalルールエディタは、1つのtsファイルしか受け付けないため
+* `bfportal-vitest-mock`と`vitest`が導入済みなので、容易にユニットテストの使用出来ます。
 
 ## インストール
 

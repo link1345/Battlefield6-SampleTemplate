@@ -8,10 +8,10 @@ This repository is designed to make it easier to write Battlefield (BF) Rule Edi
 It provides the following features:
 
 
-When you push to GitHub, ESLint automatically checks your code syntax.
-
-* Running npm run build combines multiple .ts files into a single .ts file.
-* The BF Portal Rule Editor only accepts a single TypeScript file.
+* When you push to GitHub, ESLint automatically checks your code syntax.
+* Running `npm run build` combines multiple .ts files into a single .ts file.
+  * The BF Portal Rule Editor only accepts a single TypeScript file.
+* `bfportal-vitest-mock` and `vitest` are already installed, so you can easily use unit tests.
 
 ## Installation
 
