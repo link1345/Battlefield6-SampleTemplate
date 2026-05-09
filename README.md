@@ -13,6 +13,14 @@ It provides the following features:
   * The BF Portal Rule Editor only accepts a single TypeScript file.
 * `bfportal-vitest-mock` and `vitest` are already installed, so you can easily use unit tests.
 
+## Questions / Support
+
+If you have questions or feedback, feel free to contact me on the PlumRice Discord server 😄
+
+Please use the appropriate thread/channel for discussions related to this project.
+
+https://discord.gg/Zy65k8AxH2
+
 ## Installation
 
 0. Install Node.js.
