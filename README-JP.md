@@ -8,7 +8,7 @@
 下記の機能を持っています。
 
 * githubにpushすると、自動でeslintで文法チェックが入ります。
-* `npm run build`を叩くと、複数のtsファイルを、1つのtsファイルにまとめる
+* `bun run build`を叩くと、複数のtsファイルを、1つのtsファイルにまとめる
   * BF Portalルールエディタは、1つのtsファイルしか受け付けないため
 * `bfportal-vitest-mock`と`vitest`が導入済みなので、容易にユニットテストの使用出来ます。
 
@@ -22,16 +22,23 @@ https://discord.gg/Zy65k8AxH2
 
 ## インストール
 
-0. nodejsをインストールする。JSについて何も分からない人は、下記リンクの「x64アーキテクチャーで動作するWindows用のビルド済みのNode.js®も利用できます。」から`.msi`ファイルをダウンロードしてきて、環境することをお勧めします。
-  https://nodejs.org/ja/download
+0. Bunをインストールする。Windowsの場合はPowerShellを開いて、公式インストーラーを実行する。
+  ```powershell
+  powershell -c "irm bun.sh/install.ps1|iex"
+  ```
+  インストール後はターミナルを開き直して、下記コマンドでBunが使えることを確認する。
+  ```powershell
+  bun --version
+  ```
+  https://bun.com/docs/installation
 1. このリポジトリをダウンロードしてくる。
 2. `code` フォルダに、Battlefield6公式から配布されているSDKの中の `PortalSDK/code` を入れる。
-3. `npm install`コマンドを叩く。
+3. `bun install`コマンドを叩く。
 
 ## 使い方
 
 1. `mods`フォルダに、プログラムを書く。
-2. 書き終わったら、`npm run build`コマンドを叩く。
+2. 書き終わったら、`bun run build`コマンドを叩く。
 3. `dist/Script.ts`と`dist/String.json`をBF Portalのルールエディタに登録する。
 
 ### 文字列の設定の仕方
@@ -43,3 +50,9 @@ https://discord.gg/Zy65k8AxH2
 `bfportal-vitest-mock`パッケージを採用しています。導入・使い方は、下記をご確認ください。
 
 https://github.com/link1345/bfportal-vitest-mock
+
+テストは下記コマンドで実行できます。
+
+```powershell
+bun test
+```
