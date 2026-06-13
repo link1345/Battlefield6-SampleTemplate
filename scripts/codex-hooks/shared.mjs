@@ -4,8 +4,6 @@ import path from "node:path";
 export const repoRoot = process.cwd();
 export const knowledgeDir = path.join(repoRoot, "codex-knowledge");
 export const knowledgeBasePath = path.join(knowledgeDir, "bf6-portal-knowledge.md");
-export const promptKnowledgePath = path.join(knowledgeDir, "conversation-knowledge.jsonl");
-export const hookEventsPath = path.join(knowledgeDir, "hook-events.jsonl");
 
 export const portalLogPath =
   "%LOCALAPPDATA%\\Temp\\Battlefield\u00e2\u201e\u00a2 6\\PortalLog.txt";
@@ -59,10 +57,6 @@ const knowledgeWorthyTerms = [
 const runtimeFailurePattern = new RegExp(runtimeFailureTerms.join("|"), "i");
 const knowledgeWorthyPattern = new RegExp(knowledgeWorthyTerms.join("|"), "i");
 
-export function ensureKnowledgeDir() {
-  fs.mkdirSync(knowledgeDir, { recursive: true });
-}
-
 export async function readStdinJson() {
   const chunks = [];
   for await (const chunk of process.stdin) {
@@ -89,15 +83,6 @@ export function readKnowledgeBase() {
   }
 }
 
-export function appendJsonl(filePath, value) {
-  if (process.env.CODEX_HOOK_DRY_RUN === "1") {
-    return;
-  }
-
-  ensureKnowledgeDir();
-  fs.appendFileSync(filePath, `${JSON.stringify(value)}\n`, "utf8");
-}
-
 export function extractPrompt(event) {
   return String(event.prompt ?? event.userPrompt ?? event.message ?? event.raw ?? "");
 }
@@ -115,7 +100,8 @@ export function buildAdditionalContext(extraSections = []) {
     "BF6 Portal repo hook guidance:",
     "- If `bf6-portal-typescript-mcp` is available, use it first when BF6 Portal SDK, docs, API, or behavior is unclear.",
     `- If the user says the Portal server or script does not work, inspect the runtime log before guessing: \`${portalLogPath}\`.`,
-    "- Accumulate reusable knowledge from errors, execution logs, fixes, and tips into `codex-knowledge/`.",
+    "- Do not store raw conversation logs, raw user prompts, or full execution logs as knowledge.",
+    "- When a reusable lesson is learned, write a short human-curated note to `codex-knowledge/bf6-portal-knowledge.md`: symptom, cause, fix, and when to reuse it.",
   ];
 
   const knowledge = readKnowledgeBase();
